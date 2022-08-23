@@ -1,18 +1,18 @@
 {
-  "CONTRACT_ADDRESS": "0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
-  "SCAN_LINK": "https://polygonscan.com/token/0x827acb09a2dc20e39c9aad7f7190d9bc53534192",
+  "CONTRACT_ADDRESS": "0x00ccc5fe33fa66847082af413d4a8700cd7cde16",
+  "SCAN_LINK": "https://etherscan.io/token/0x00ccc5fe33fa66847082af413d4a8700cd7cde16",
   "NETWORK": {
-    "NAME": "Polygon",
-    "SYMBOL": "Matic",
-    "ID": 137
+    "NAME": "Mainnet",
+    "SYMBOL": "ETH",
+    "ID": 1
   },
-  "NFT_NAME": "Nerdy Coder Clones",
-  "SYMBOL": "NCC",
-  "MAX_SUPPLY": 1000,
-  "WEI_COST": 75000000000000000,
-  "DISPLAY_COST": 0.075,
+  "NFT_NAME": "Wen Rug Pull",
+  "SYMBOL": "WENRUGPULL",
+  "MAX_SUPPLY": 6969,
+  "WEI_COST": 20000000000000000,
+  "DISPLAY_COST": 0.02,
   "GAS_LIMIT": 285000,
   "MARKETPLACE": "Opeansea",
-  "MARKETPLACE_LINK": "https://opensea.io/collection/nerdy-coder-clones",
+  "MARKETPLACE_LINK": "https://opensea.io/collection/wenrugpull",
   "SHOW_BACKGROUND": true
 }

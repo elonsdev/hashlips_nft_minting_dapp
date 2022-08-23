@@ -76,7 +76,7 @@ export const StyledLogo = styled.img`
 
 export const StyledImg = styled.img`
   box-shadow: 0px 5px 11px 2px rgba(0, 0, 0, 0.7);
-  border: 4px dashed var(--secondary);
+
   background-color: var(--accent);
   border-radius: 100%;
   width: 200px;
@@ -119,6 +119,7 @@ function App() {
     MARKETPLACE_LINK: "",
     SHOW_BACKGROUND: false,
   });
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const claimNFTs = () => {
     let cost = CONFIG.WEI_COST;
@@ -171,6 +172,7 @@ function App() {
   const getData = () => {
     if (blockchain.account !== "" && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
+      setIsLoggedIn(true);
     }
   };
 
@@ -216,30 +218,46 @@ function App() {
               backgroundColor: "var(--accent)",
               padding: 24,
               borderRadius: 24,
-              border: "4px dashed var(--secondary)",
+
               boxShadow: "0px 5px 11px 2px rgba(0,0,0,0.7)",
             }}
           >
-            <s.TextTitle
-              style={{
-                textAlign: "center",
-                fontSize: 50,
-                fontWeight: "bold",
-                color: "var(--accent-text)",
-              }}
-            >
-              {data.totalSupply} / {CONFIG.MAX_SUPPLY}
-            </s.TextTitle>
+            {isLoggedIn == true ? (
+              <>
+                <s.TextTitle
+                  style={{
+                    textAlign: "center",
+                    fontSize: 50,
+                    fontWeight: "bold",
+                    color: "var(--accent-text)",
+                  }}
+                >
+                  {data.totalSupply} / {CONFIG.MAX_SUPPLY}
+                </s.TextTitle>  
+
+                
+              </>
+            ):(
+              <>
+                 <s.TextTitle
+                  style={{
+                    textAlign: "center",
+                    fontSize: 30,
+                    fontWeight: "bold",
+                    color: "var(--accent-text)",
+                  }}
+                >
+                  It's More Than Just An NFT
+                </s.TextTitle>  
+                
+              </>
+            )}
             <s.TextDescription
-              style={{
-                textAlign: "center",
-                color: "var(--primary-text)",
-              }}
-            >
-              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
-                {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
-              </StyledLink>
-            </s.TextDescription>
+                  style={{ textAlign: "center", color: "var(--accent-text)" }}
+                >
+                  A Rug is not your typical NFT. This one comes with a very valuable lesson. Join us on our journey to see exactly what that lesson is. 
+                </s.TextDescription>
+            
             <s.SpacerSmall />
             {Number(data.totalSupply) >= CONFIG.MAX_SUPPLY ? (
               <>
@@ -272,6 +290,16 @@ function App() {
                 >
                   Excluding gas fees.
                 </s.TextDescription>
+                <s.TextDescription
+              style={{
+                textAlign: "center",
+                color: "var(--primary-text)",
+              }}
+            >
+              <StyledLink target={"_blank"} href={CONFIG.SCAN_LINK}>
+                {truncate(CONFIG.CONTRACT_ADDRESS, 15)}
+              </StyledLink>
+            </s.TextDescription>
                 <s.SpacerSmall />
                 {blockchain.account === "" ||
                 blockchain.smartContract === null ? (
@@ -383,23 +411,20 @@ function App() {
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
+              color: "white",
             }}
           >
-            Please make sure you are connected to the right network (
-            {CONFIG.NETWORK.NAME} Mainnet) and the correct address. Please note:
-            Once you make the purchase, you cannot undo this action.
+            When you experience a rug pull of any kind, you don’t just need somewhere to vent, you need a group of strangers that are going give you fire emojis and help you get through it.
           </s.TextDescription>
           <s.SpacerSmall />
           <s.TextDescription
             style={{
               textAlign: "center",
-              color: "var(--primary-text)",
+              color: "white",
             }}
           >
-            We have set the gas limit to {CONFIG.GAS_LIMIT} for the contract to
-            successfully mint your NFT. We recommend that you don't lower the
-            gas limit.
+            In the NFT industry and life in general, scams are beyond common and we are all impacted. We need to come together as a community to help each other spot the warning signs, identify risks and educate and protect ourselves. <a style={{color:"#25fdd4"}} href="https://discord.gg/MWruqnJ7p7" target="blank_">Join the Discord</a>, find your people and stay strong as a community so that good wins over evil!
+            
           </s.TextDescription>
         </s.Container>
       </s.Container>

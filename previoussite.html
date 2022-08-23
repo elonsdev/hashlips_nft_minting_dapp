@@ -1,0 +1,340 @@
+{% load static %}
+
+{% load bootstrap4 %}
+
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="expires" content="43200"/>
+    <meta name="robots" content="index, follow"/>
+    
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/favicons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'images/favicons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'images/favicons/site.webmanifest' %}">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>Wen Rug Pull | Collectible ERC-721 Rugs</title>
+
+    <meta name="description" content="Mint your Wen Rug Pull V1 Rug today and claim your spot in history. Built on the Ethereum Blockchain following the ERC-721 Standard you can be the owner of your rug today.">
+
+    <meta property="og:title" content="Wen Rug Pull | Collectible ERC-721 Rugs">
+    <meta property="og:description" content="Mint your Wen Rug Pull V1 Rug today and claim your spot in history. Built on the Ethereum Blockchain following the ERC-721 Standard you can be the owner of your rug today.">
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:image" content="http://{{ request.get_host }}{% static 'images/og_image.png' %}">
+    <meta property="og:image:width" content="1200px">
+    <meta property="og:image:height" content="1200px">
+
+    <meta name="twitter:image" content="http://{{ request.get_host }}{% static 'images/og_image.png' %}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Wen Rug Pull | Collectible ERC-721 Rugs">
+    <meta name="twitter:description" content="Mint your Wen Rug Pull V1 Rug today and claim your spot in history. Built on the Ethereum Blockchain following the ERC-721 Standard you can be the owner of your rug today.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,400;1,100;1,700&family=Rock+Salt&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% bootstrap_messages %}
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#"><img src="{% static 'images/logo.svg' %}" alt="" style="height: 45px;"></a>
+        <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#mint-your-rug">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#roadmap">Roadmap</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">Team</a>
+                </li>
+            </ul>
+            <a href="https://twitter.com/pullmyrug" class="btn blue mr-lg-2 visitTwitter" target="blank_">Twitter</a>
+            <a href="https://discord.gg/MWruqnJ7p7" class="btn green mr-lg-2 joinDiscordButton" target="blank_">Join Discord</a>
+            <a href="#" class="btn pink checkWalletLifeButton">Connect Wallet</a>
+        </div>
+    </nav>
+
+    <div class="jumbotron-fluid" id="mint-your-rug" style="background-image: url('{% static 'images/question-marks.svg' %}'); background-position: center; background-size: cover;">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-12" id="content">
+                    <div class="row">
+                        <div class="col-lg-6 offset-lg-3">
+                            <div class="animated fadeInDown">
+                                <h1 class="green mb-3 mt-3">Wen Rugs</h1>
+                                <p class="lead" style="font-size: 24px;">Dropping on June 27th at 4:20 EDT. You have to wait...</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="countdown" class="animated fadeInDown delay-1s" style="display: inline-block; width: 100%;">
+                        <div id="days" style="display: inline-block;">
+                            <div class="val"></div>
+                            <p style="font-size: 18px;">Days</p>
+                        </div>
+                        <div id="hours" style="display: inline-block;">
+                            <div class="val"></div>
+                            <p style="font-size: 18px;">Hours</p>
+                        </div>
+                        <div id="minutes" style="display: inline-block;">
+                            <div class="val"></div>
+                            <p style="font-size: 18px;">Minutes</p>
+                        </div>
+                        <div id="seconds" style="display: inline-block;">
+                            <div class="val"></div>
+                            <p style="font-size: 18px;">Seconds</p>
+                        </div>
+                    </div>
+
+                    <div class="row animated fadeInDown delay-2s" style="padding-top: 80px;">
+                        <div class="col-8 offset-2 col-sm-6 offset-sm-3 col-lg-4 offset-lg-4">
+                            <div id="mc_embed_signup">
+                                <form action="https://wenrugpull.us6.list-manage.com/subscribe/post?u=24f16995f0e8f05547117f4ae&amp;id=1dff9562d6" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                    <div id="mc_embed_signup_scroll">
+                                    
+                                    <input type="email" value="" name="EMAIL" class="form-control" id="mce-EMAIL" placeholder="Email Address..." required>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_24f16995f0e8f05547117f4ae_1dff9562d6" tabindex="-1" value=""></div>
+
+                                    <div class="clear mt-3"><input type="submit" value="Get Email Updates" name="subscribe" id="mc-embedded-subscribe" class="btn pink btn-block" style="width: 100%;"></div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="margin-top: 80px;" id="about">
+        <div class="row animated fadeInUp">
+            <div class="col-lg-6 order-12 order-lg-1">
+                <h2 class="pink mb-4">A Rug Just<br> For You</h2>
+                <p>The Rug Pull Team has high expectations for this project after creating 6969 hand-painted rugs minted on the Ethereum blockchain for you to add to your collection.</p>
+
+                <p>The Rug Pull Team found one another through a journey of unfulfilled passions as every team member was shocked by the people within the NFT industry and communities. Now its our turn to deliver an experience you won’t ever forget.</p>
+
+                <p>To create that experience Rugs are packed to the brim with utility. This Rug is the one item you want to keep in your collection. There hasn’t been an NFT with such strong exclusivity appended since those beautiful spinning eggs. Are you going to be one of the many that look back and regret not getting your rug when you could?</p>
+
+                <ul class="mt-3 blue-dots">
+                    <li>A total of 6969 (nice!) Rugs will be minted for .02 ETH each.</li>
+                    <li>All minted rugs are rolled and hidden until 2 days after all rugs sell out.</li>
+                    <li>No bonding curve... Because that would be a scam.</li>
+                </ul>
+            </div>
+            <div class="col-lg-5 offset-lg-1 order-1 order-lg-12 mb-5" style="display: grid;">
+                <img src="{% static 'images/rugs.gif' %}" alt="Rug Preview Gif" class="img-fluid" style="margin: auto;">
+            </div>
+        </div>
+    </div>
+
+
+    <img src="{% static 'images/pink-green-gradient.png' %}" alt="" style="height: auto; min-width: 100%; margin-top: 40px;">
+    <div class="jumbotron-fluid pink" id="roadmap">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-sm-10 offset-sm-1 col-lg-6 offset-lg-3 mt-5 mb-5">
+                    <h2 class="green">The Roadmap</h2>
+                    <p>We are currently working on many initiatives for members of the Rug Pull community that may or <strong><em>may not</em></strong> (hint hint) include the following:</p>
+                </div>
+
+                <div class="col-12" style="margin-bottom: 80px;">
+                    <div class="entries">
+                        <div class="entry">
+                            <div class="title big">A</div>
+                            <div class="body">
+                            <p>EACH MINTER WILL RECEIVE A BEAUTIFUL 'HAND-PAINTED' NFT RUG.</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">B</div>
+                            <div class="body">
+                            <p>BACKDOOR ADMISSIONS TO EXCLUSIVE COLLEGES AND UNIVERSITIES FOR RUG HOLDERS AND THEIR IMMEDIATE FAMILY</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">C</div>
+                            <div class="body">
+                            <p>ACCESS TO AN INVESTMENT POOL OF FUNDS THAT PROMISES 6969% (NICE) INTEREST IN UNREALISTICALLY SHORT PERIODS OF TIME</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">D</div>
+                            <div class="body">
+                            <p>EXCLUSIVE PARTIES ON A PRIVATE ISLAND IN THE BAHAMAS FOR ALL RUG HOLDERS. MIX AND MINGLE WITH SUPERMODELS AND INFLUENCERS AS YOU PARTY TO “GREAT” MUSICAL ACTS. DID I MENTION THE ACCOMMODATIONS AND FOOD?</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">E</div>
+                            <div class="body">
+                            <p>“THE HONEYPOT” – DOWNLOAD A COMPUTER PROGRAM THAT WILL ALLOW YOU TO KNOW THE RESULTS OF RACES AND EVENTS BEFORE THEY EVEN HAPPEN – LIKE BIFF’S ALMANAC</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">F</div>
+                            <div class="body">
+                            <p>SHARE IN OWNERSHIP IN A NEWLY DISCOVERED GOLD MINE IN BUSANG, INDONESIA</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">G</div>
+                            <div class="body">
+                            <p>COUNTLESS OPPORTUNITIES TO SEND MONEY TO HELP ROYALTY UNLOCK UNTOLD RICHES THAT WILL BE IMMEDIATELY SHARED WITH YOU</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">H</div>
+                            <div class="body">
+                            <p>MANY AVAILABLE AND OVERLY ATTRACTIVE PEOPLE ONLINE TO MEET AND GROW VERY CLOSE TO WHILE FUNDING THEIR ELABORATE LIFE-SAVING SURGERIES.  COULD AN ONLINE WEDDING BE IN THE FUTURE?</p>
+                            </div>
+                        </div>
+                        <div class="entry">
+                            <div class="title">I</div>
+                            <div class="body">
+                            <p>AND THE BEST FOR LAST. HUN, I HAVEN’T SEEN YOU SINCE HIGH SCHOOL BUT I SEE YOU ARE DOING VERY WELL FOR YOURSELF. I HAVE A GREAT OPPORTUNITY WHERE YOU CAN BE PRESIDENT OF YOUR OWN COMPANY, MAKING THOUSANDS OF DOLLARS A WEEK, WHILE WORKING FROM HOME A COUPLE HOURS A MONTH</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="{% static 'images/green-blue-gradient.png' %}" alt="" style="height: auto; min-width: 100%; margin-bottom: -40px;">
+    <div class="container" id="community">
+        <div class="row">
+            <div class="col-lg-6">
+                <h2 class="green">Join The<br>Discord Server</h2>
+                <p>When you experience a rug pull of any kind, you don’t just need somewhere to vent, you need a group of strangers that are going give you fire emojis and help you get through it.</p>
+
+                <p>In the NFT industry and life in general, scams are beyond common and we are all impacted. We need to come together as a community to help each other spot the warning signs, identify risks and educate and protect ourselves. Join the discord, find your people and stay strong as a community so that good wins over evil!</p>
+
+                <a href="https://discord.gg/MWruqnJ7p7" class="btn pink mt-5 joinDiscordButton" target="blank_">Join Discord</a>
+            </div>
+        </div>
+    </div>
+
+    <img src="{% static 'images/blue-red-gradient.png' %}" alt="" style="height: auto; min-width: 100%; margin-top: -460px;" id="blue-red-gradient">
+    <div class="jumbotron-fluid blue" id="team">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 text-center mt-5 mb-5">
+                    <h2 class="white">The Team</h2>
+                    <p class="lead">The only thing that matters about the team is what can be delivered.</p>        
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="row" id="members">
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/a.png' %}" alt="A Guy" class="img-fluid">
+                            <p><strong>Ponzi</strong></p>
+                            <p>Founder and Lead Schemer</p>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/b.png' %}" alt="B Guy" class="img-fluid">
+                            <p><strong>Bernie M</strong></p>
+                            <p>Head of Accounting</p>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/c.png' %}" alt="C Guy" class="img-fluid">
+                            <p><strong>BJ Fyre</strong></p>
+                            <p>Doing Whatever It Takes</p>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/d.png' %}" alt="D Guy" class="img-fluid">
+                            <p><strong>Wolfey</strong></p>
+                            <p>Ain’t Fucking Leaving</p>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/e.png' %}" alt="E Guy" class="img-fluid">
+                            <p><strong>Aunt Becky</strong></p>
+                            <p>Head of Admissions</p>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <img src="{% static 'images/f.png' %}" alt="F Guy" class="img-fluid">
+                            <p><strong>Karen</strong></p>
+                            <p>Manager Coordinator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <img src="{% static 'images/blue-red-green-gradient.png' %}" alt="" style="height: auto; min-width: 100%; margin-top: -240px;">
+    <div class="container" style="margin-bottom: 180px;">
+        <div class="row">
+            <div class="col-lg-5 mb-5" style="display: grid;">
+                <img src="{% static 'images/Rug2.jpg' %}" alt="Rug 2" class="img-fluid" style="margin: auto;"> 
+            </div>
+            <div class="col-lg-6 offset-lg-1">
+                <h2 class="pink">It's More Than Just An NFT</h2>
+                <p>A Rug is not your typical NFT. This one comes with a very valuable lesson. Join us on our journey to see exactly what that lesson is. The Roadmap outlines the many utilities that come with Rug ownership but even if that all went away the friends made and lessons learned are well worth the trip.</p>
+
+                <a href="#mint-your-rug" class="btn pink mt-5 checkWalletLifeButton">Mint Your Rug</a>
+            </div>
+        </div>
+    </div>
+
+    <script defer data-domain="pullmyrug.com" src="https://plausible.io/js/plausible.js"></script>
+    <script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
+    <script>
+        $(".checkWalletLifeButton").on('click', function() {
+            plausible('Performed Initial Mint Login Action');
+        })
+
+        $(".joinDiscordButton").on('click', function() {
+            plausible('Clicked Join Discord');
+        })
+
+        $(".visitTwitter").on('click', function() {
+            plausible('Visited Twitter');
+        })
+
+        // Set the date we're counting down to
+        const zeroPad = (num, places) => String(num).padStart(places, '0')
+        var countDownDate = new Date("Jun 27, 2021 20:20:00").getTime();
+
+        // Update the count down every 1 second
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+                
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            $("#days .val").html(zeroPad(days, 2));
+            $("#hours .val").html(zeroPad(hours, 2));
+            $("#minutes .val").html(zeroPad(minutes, 2));
+            $("#seconds .val").html(zeroPad(seconds, 2));
+            // Output the result in an element with id="demo"
+            {% comment %} document.getElementById("countdown").innerHTML = zeroPad(days, 2) + ":" + zeroPad(hours, 2) + ":" + zeroPad(minutes, 2) + ":" + zeroPad(seconds, 2); {% endcomment %}
+        }, 1000);
+    </script>
+</body>
+</html>
